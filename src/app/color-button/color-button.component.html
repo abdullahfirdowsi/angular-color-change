@@ -1,0 +1,64 @@
+<div class="color-change-container">
+  <!-- Simple Version -->
+  <div class="card mb-4" role="region" aria-label="Simple Color Button">
+    <div class="card-header bg-primary text-white">
+      Simple Color Button
+    </div>
+    <div class="card-body">
+      <div class="mb-3">
+        <label for="simpleColorInput" class="form-label">Enter Color:</label>
+        <div class="input-group">
+          <input 
+            type="text" 
+            class="form-control"
+            id="simpleColorInput"
+            [(ngModel)]="simpleColor"
+            [class.is-invalid]="simpleColor && !isValidColor(simpleColor)"
+            placeholder="Try colors like red, blue, green..."
+            aria-label="Enter a color name">
+          <button 
+            class="btn btn-primary"
+            [style.backgroundColor]="currentSimpleColor"
+            (click)="changeButtonColor()"
+            aria-label="Change button color">
+            Change Color
+          </button>
+        </div>
+        <div *ngIf="simpleColor && !isValidColor(simpleColor)" class="color-feedback error-feedback">
+          Please enter a valid color name
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Complex Version -->
+  <div class="card" role="region" aria-label="Auto-Update Color Button">
+    <div class="card-header bg-primary text-white">
+      Auto-Update Color Button
+    </div>
+    <div class="card-body">
+      <div class="mb-3">
+        <label for="complexColorInput" class="form-label">Type Color Name:</label>
+        <div class="input-group">
+          <input 
+            type="text" 
+            class="form-control"
+            [class.is-invalid]="complexColor && !isValidColor(complexColor)"
+            id="complexColorInput"
+            (input)="onColorInput($event)"
+            placeholder="Type any valid CSS color name"
+            aria-label="Enter a color name for auto-update">
+          <button 
+            class="btn btn-primary"
+            [style.backgroundColor]="isValidColor(complexColor) ? complexColor : '#0d6efd'"
+            aria-label="Auto-updating color button">
+            Auto Color
+          </button>
+        </div>
+        <div *ngIf="complexColor && !isValidColor(complexColor)" class="color-feedback error-feedback">
+          Please enter a valid color name
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

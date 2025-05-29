@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ColorButtonComponent } from './color-button/color-button.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [ColorButtonComponent],
+  template: '<app-color-button></app-color-button>'
 })
-export class AppComponent {
-  title = 'colour-change-app';
-}
+export class AppComponent { }
